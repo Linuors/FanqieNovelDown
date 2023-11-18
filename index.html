@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh" class="js">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>番茄小说TXT下载</title>
+    <link rel="icon" href="//zystatic.com/novel.aaxg.cn/logo.png" type ="image/x-icon">
+    <link rel="stylesheet" href="//zystatic.com/novel.aaxg.cn/dashlite.css">
+	<link rel="stylesheet" href="//zystatic.com/novel.aaxg.cn/style.css">
+	<script src="//zystatic.com/novel.aaxg.cn/jquery.min.js"></script>
+    <script src="//zystatic.com/novel.aaxg.cn/bootstrap.bundle.min.js"></script>
+    <script src="//zystatic.com/novel.aaxg.cn/layer.js"></script>
+    <script src="//zystatic.com/novel.aaxg.cn/vue.min.js"></script>
+    <script src="//zystatic.com/novel.aaxg.cn/gt4.js"></script>
+    <script>
+            function checkName()  {
+                var key = $('#key').val();
+                var id = $('#id').val();
+                if(id == "")  {
+                    window.alert("请填写BOOKID")
+                    return
+                }
+                else  {
+                    alert("已经提交下载任务，点击确认跳转下载界面...");
+                    window.location.href="/api/xz.php?id=" + id ;
+                }
+                
+            $.ajax({
+                url: "/api/book.php",
+                type: "GET",
+                data: {"key": key, "id": id},
+            
+                success: function (msg) {
+                if(msg == "无效的key") {
+                    alert(msg);
+                    location.reload();
+              }
+            },
+            });
+            }
+    </script>
+</head>
+<body class="nk-body npc-invest bg-lighter ">
+    <div class="nk-wrap ">
+<div class="nk-header nk-header-fluid nk-header-fixed is-light">
+    <div class="container-xl">
+        <div class="nk-header-wrap link-between">
+            <div class="nk-menu-trigger mr-sm-2 d-lg-none">
+            </div>
+            <div class="nk-header-brand">
+                <a href="/" class="logo-link text-base">番茄小说TXT下载</a>
+            </div>
+            <div class="nk-header-tools nk-header-menu" data-content="headerNav">
+                <div class="nk-header-mobile">
+                    <div class="nk-header-brand">
+                    </div>
+                    <div class="nk-menu-trigger mr-n2">
+                        <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="headerNav"><em class="icon ni ni-arrow-left"></em></a>
+                    </div>
+                </div>
+            </div>
+            <div class="no-gutters">
+                <ul class="nk-quick-nav">
+                    <li class="dropdown">
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+        <div class="nk-content nk-content-lg nk-content-fluid">
+<style>
+.query-title {
+    text-align: right;
+}
+.table-title th{word-break: keep-all;}
+</style>
+<div class="container-xl" id="app">
+<div class="col-md-12 col-xl-10 center-block">
+    <div class="card card-preview">
+        <div class="card-inner mt-3">
+            <div class="form-group">
+                <label class="form-label">请输入19位BookID：</label>
+                <div class="form-control-wrap">
+                    <input type="text" placeholder="请输入19位BookID" class="form-control form-control-lg" id="id" name="id">
+                    <br>
+                    <label class="form-label">请输入8位Key：</label>
+                    <input type="text" placeholder="请输入8位Key" class="form-control form-control-lg" id="key" name="key">
+                </div>
+            </div>
+            <a class="btn btn-dim btn-outline-primary btn-block card-link mb-3" href="javascript:;" onClick="checkName();">提交</a>
+        </div>
+    </div>
+    <div class="card card-preview">
+        <div class="card-inner">
+            <h6>搜索BookID</h6>
+            <div class="accordion-inner">
+                <form action="/api/search.php?=" method="GET">
+                <label class="form-label">不知道BookID？在下方使用书名搜索：</label>
+                <input type="text" placeholder="请输入书名" class="form-control form-control-lg" id="q" name="q">
+                <br>
+                <button class="btn btn-dim btn-outline-primary btn-block card-link mb-3">提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+        <div class="nk-footer nk-footer-fluid bg-lighter">
+    <div class="container-xl">
+        <div class="nk-footer-wrap">
+            <div class="nk-footer-copyright"> 
+            <a>&copy; 2023 Linuors</a>
+            <br>
+            <a target="_blank" href="https://beian.miit.gov.cn" >粤ICP备1145141919号-1</a>
+            <br>
+            <a target="_blank" href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=1145141919" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"><img src="//zystatic.com/novel.aaxg.cn/备案图标.png" style="float:left;">粤公网安备 114514191981006号</a>
+            </div>
+        </div>
+    </div>
+</div>
+    </div>
+
+</body>
+</html>
